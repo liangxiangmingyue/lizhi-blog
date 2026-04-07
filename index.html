@@ -17,9 +17,7 @@
       --border: #D8D0C4;
       --card: #FFFFFF;
     }
-
     * { margin: 0; padding: 0; box-sizing: border-box; }
-
     body {
       font-family: 'Inter', sans-serif;
       background: var(--bg);
@@ -35,7 +33,6 @@
       background: var(--bg);
       border-bottom: 1px solid var(--border);
     }
-
     .top-bar {
       max-width: 1200px;
       margin: 0 auto;
@@ -45,7 +42,6 @@
       align-items: center;
       height: 64px;
     }
-
     .logo {
       font-family: 'Playfair Display', serif;
       font-size: 22px;
@@ -54,61 +50,131 @@
       color: var(--text);
       text-decoration: none;
     }
-
-    .logo span {
-      color: var(--accent);
-    }
-
-    nav {
-      display: flex;
-      gap: 36px;
-    }
-
+    .logo span { color: var(--accent); }
+    nav { display: flex; gap: 36px; }
     nav a {
       font-size: 13px;
       color: var(--text-light);
       text-decoration: none;
       letter-spacing: 1px;
       transition: color 0.2s;
+      cursor: pointer;
     }
-
-    nav a:hover, nav a.active {
-      color: var(--accent);
-    }
+    nav a:hover, nav a.active { color: var(--accent); }
 
     /* ── 主内容 ── */
-    main {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 60px 40px;
+    main { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
+
+    /* ── 自我介面 ── */
+    .intro-section {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 48px;
+      padding: 60px 0;
+      border-bottom: 1px solid var(--border);
+      align-items: start;
+    }
+    .intro-photo {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 200px 200px;
+      gap: 8px;
+    }
+    .intro-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 4px;
+    }
+    .intro-photo img:first-child {
+      grid-column: span 2;
+      height: 240px;
+    }
+    .intro-content .label {
+      font-size: 10px;
+      color: var(--accent);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .intro-content h1 {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 42px;
+      font-weight: 400;
+      letter-spacing: 4px;
+      margin-bottom: 8px;
+    }
+    .intro-content .subtitle {
+      font-size: 13px;
+      color: var(--text-light);
+      margin-bottom: 28px;
+      letter-spacing: 1px;
+    }
+    .intro-content p {
+      font-size: 14px;
+      color: var(--text-light);
+      line-height: 2;
+      margin-bottom: 14px;
+    }
+    .intro-tags {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 24px;
+    }
+    .tag {
+      font-size: 11px;
+      padding: 5px 14px;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      color: var(--text-light);
+    }
+    .intro-contact {
+      margin-top: 28px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      gap: 20px;
+    }
+    .intro-contact span {
+      font-size: 12px;
+      color: var(--text-light);
     }
 
-    /* ── 首屏专题 ── */
+    /* ── 分割线标题 ── */
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 11px;
+      color: var(--text-light);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin: 56px 0 32px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .section-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* ── 专题区 ── */
     .featured {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 48px;
-      margin-bottom: 80px;
       padding-bottom: 60px;
       border-bottom: 1px solid var(--border);
     }
-
-    .featured-main {
-      position: relative;
-    }
-
-    .featured-main .img-placeholder {
+    .featured-main { position: relative; }
+    .featured-main img {
       width: 100%;
       height: 420px;
-      background: var(--bg-dark);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 13px;
-      color: var(--text-light);
-      letter-spacing: 1px;
+      object-fit: cover;
+      border-radius: 4px;
     }
-
     .featured-main .tag {
       display: inline-block;
       margin-top: 20px;
@@ -117,106 +183,71 @@
       letter-spacing: 2px;
       text-transform: uppercase;
     }
-
     .featured-main h2 {
       font-family: 'Noto Serif SC', serif;
-      font-size: 36px;
+      font-size: 32px;
       font-weight: 400;
       line-height: 1.4;
       margin-top: 12px;
-      letter-spacing: 2px;
     }
-
     .featured-main .desc {
       margin-top: 16px;
       font-size: 14px;
       color: var(--text-light);
       line-height: 1.9;
     }
-
     .featured-main .date {
       margin-top: 20px;
       font-size: 11px;
       color: var(--text-light);
       letter-spacing: 1px;
     }
-
     .featured-side {
       display: flex;
       flex-direction: column;
-      gap: 32px;
-      padding-top: 20px;
+      gap: 24px;
+      padding-top: 16px;
     }
-
     .featured-item {
       display: flex;
-      gap: 20px;
-      padding-bottom: 32px;
+      gap: 16px;
+      padding-bottom: 24px;
       border-bottom: 1px solid var(--border);
     }
-
     .featured-item:last-child { border-bottom: none; }
-
-    .featured-item .img-placeholder {
-      width: 120px;
-      height: 90px;
+    .featured-item img {
+      width: 100px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 4px;
       flex-shrink: 0;
-      background: var(--bg-dark);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 11px;
-      color: var(--text-light);
     }
-
     .featured-item .tag {
       font-size: 10px;
       color: var(--accent);
       letter-spacing: 1px;
       text-transform: uppercase;
     }
-
     .featured-item h3 {
       font-family: 'Noto Serif SC', serif;
-      font-size: 18px;
+      font-size: 17px;
       font-weight: 400;
       margin-top: 6px;
       line-height: 1.5;
     }
-
     .featured-item .date {
-      margin-top: 8px;
+      margin-top: 6px;
       font-size: 11px;
       color: var(--text-light);
     }
 
-    /* ── 网格文章 ── */
-    .section-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 11px;
-      color: var(--text-light);
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      margin-bottom: 32px;
-      display: flex;
-      align-items: center;
-      gap: 16px;
-    }
-
-    .section-title::after {
-      content: '';
-      flex: 1;
-      height: 1px;
-      background: var(--border);
-    }
-
+    /* ── 文章网格 ── */
     .article-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 32px;
-      margin-bottom: 80px;
+      gap: 24px;
+      margin-bottom: 56px;
     }
-
     .article-card {
       background: var(--card);
       border: 1px solid var(--border);
@@ -224,45 +255,29 @@
       transition: all 0.3s;
       cursor: pointer;
     }
-
-    .article-card:hover {
-      border-color: var(--accent);
-      transform: translateY(-4px);
-    }
-
-    .article-card .img-placeholder {
+    .article-card:hover { border-color: var(--accent); transform: translateY(-4px); }
+    .article-card img {
       width: 100%;
-      height: 200px;
-      background: var(--bg-dark);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 12px;
-      color: var(--text-light);
+      height: 180px;
+      object-fit: cover;
     }
-
-    .article-card .card-body {
-      padding: 24px;
-    }
-
+    .article-card .card-body { padding: 20px; }
     .article-card .tag {
       font-size: 10px;
       color: var(--accent);
       letter-spacing: 1px;
       text-transform: uppercase;
     }
-
     .article-card h3 {
       font-family: 'Noto Serif SC', serif;
-      font-size: 20px;
+      font-size: 18px;
       font-weight: 400;
-      margin-top: 10px;
+      margin-top: 8px;
       line-height: 1.5;
     }
-
     .article-card .preview {
-      margin-top: 12px;
-      font-size: 13px;
+      margin-top: 10px;
+      font-size: 12px;
       color: var(--text-light);
       line-height: 1.8;
       display: -webkit-box;
@@ -270,85 +285,193 @@
       -webkit-box-orient: vertical;
       overflow: hidden;
     }
-
     .article-card .meta {
-      margin-top: 16px;
-      font-size: 11px;
+      margin-top: 12px;
+      font-size: 10px;
       color: var(--text-light);
     }
 
-    /* ── 大Banner ── */
-    .banner {
+    /* ── MBTI Banner ── */
+    .mbti-banner {
       background: var(--text);
       color: white;
-      padding: 80px 60px;
-      margin-bottom: 80px;
+      padding: 60px;
+      margin: 56px 0;
+      display: grid;
+      grid-template-columns: auto 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+    .mbti-banner .mbti-letter {
+      font-family: 'Playfair Display', serif;
+      font-size: 100px;
+      font-weight: 700;
+      line-height: 1;
+      color: var(--accent-light);
+      opacity: 0.9;
+    }
+    .mbti-banner .mbti-name {
+      font-size: 14px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 8px;
+    }
+    .mbti-banner h2 {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 28px;
+      font-weight: 400;
+      margin-bottom: 16px;
+    }
+    .mbti-banner p {
+      font-size: 13px;
+      color: rgba(255,255,255,0.7);
+      line-height: 2;
+    }
+    .mbti-banner .mbti-link {
+      display: inline-block;
+      margin-top: 24px;
+      font-size: 12px;
+      color: var(--accent-light);
+      letter-spacing: 1px;
+      cursor: pointer;
+      border-bottom: 1px solid var(--accent-light);
+      padding-bottom: 2px;
+    }
+
+    /* ── MBTI 详情页 ── */
+    .mbti-detail { display: none; }
+    .mbti-detail.active { display: block; }
+    .mbti-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: var(--text-light);
+      cursor: pointer;
+      margin-bottom: 40px;
+      margin-top: 40px;
+    }
+    .mbti-back:hover { color: var(--accent); }
+    .mbti-hero {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 40px;
+      align-items: start;
+      margin-bottom: 48px;
+      padding-bottom: 48px;
+      border-bottom: 1px solid var(--border);
+    }
+    .mbti-hero .big-letters {
+      font-family: 'Playfair Display', serif;
+      font-size: 72px;
+      font-weight: 700;
+      color: var(--accent);
+      line-height: 1;
+    }
+    .mbti-hero .big-letters span { display: block; font-size: 11px; letter-spacing: 2px; color: var(--text-light); margin-top: 8px; font-weight: 400; }
+    .mbti-hero h1 {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 36px;
+      font-weight: 400;
+      margin-bottom: 12px;
+    }
+    .mbti-hero .alias {
+      font-size: 13px;
+      color: var(--accent);
+      letter-spacing: 1px;
+      margin-bottom: 20px;
+    }
+    .mbti-hero p {
+      font-size: 14px;
+      color: var(--text-light);
+      line-height: 2;
+    }
+    .mbti-content h2 {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 22px;
+      font-weight: 400;
+      margin: 40px 0 20px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+    .mbti-content p {
+      font-size: 14px;
+      color: #444;
+      line-height: 2.2;
+      margin-bottom: 16px;
+    }
+    .mbti-content .highlight-box {
+      background: var(--bg-dark);
+      border-left: 3px solid var(--accent);
+      padding: 20px 24px;
+      margin: 24px 0;
+      font-size: 14px;
+      color: var(--text);
+      line-height: 2;
+      font-style: italic;
+    }
+    .mbti-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 60px;
-      align-items: center;
+      gap: 24px;
+      margin: 24px 0;
     }
-
-    .banner .label {
-      font-size: 10px;
-      color: var(--accent-light);
-      letter-spacing: 3px;
-      text-transform: uppercase;
+    .mbti-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      padding: 24px;
+      border-radius: 6px;
     }
-
-    .banner h2 {
-      font-family: 'Noto Serif SC', serif;
-      font-size: 42px;
-      font-weight: 400;
-      line-height: 1.4;
-      margin-top: 16px;
-    }
-
-    .banner p {
+    .mbti-card h4 {
+      font-family: 'Playfair Display', serif;
       font-size: 14px;
-      color: rgba(255,255,255,0.7);
-      line-height: 1.9;
-      margin-top: 20px;
+      font-weight: 600;
+      margin-bottom: 12px;
+      color: var(--accent);
     }
-
-    .banner .img-placeholder {
-      width: 100%;
-      height: 300px;
-      background: rgba(255,255,255,0.08);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 12px;
-      color: rgba(255,255,255,0.4);
+    .mbti-card p {
+      font-size: 13px;
+      color: var(--text-light);
+      line-height: 1.8;
     }
-
-    /* ── 最新文章列表 ── */
-    .article-list {
-      margin-bottom: 80px;
+    .mbti-journey {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin: 24px 0;
     }
+    .journey-item {
+      text-align: center;
+      padding: 20px 12px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+    }
+    .journey-item .letter { font-size: 24px; color: var(--accent); font-weight: 600; }
+    .journey-item .letter span { font-size: 11px; color: var(--text-light); display: block; margin-top: 4px; }
+    .journey-item h5 { font-size: 12px; margin: 10px 0 6px; }
+    .journey-item p { font-size: 11px; color: var(--text-light); line-height: 1.6; }
 
+    /* ── 时间线文章 ── */
+    .article-list { margin-bottom: 56px; }
     .list-item {
       display: grid;
       grid-template-columns: 80px 1fr;
       gap: 32px;
-      padding: 32px 0;
+      padding: 28px 0;
       border-bottom: 1px solid var(--border);
       cursor: pointer;
     }
-
-    .list-item:hover .list-title {
-      color: var(--accent);
-    }
-
+    .list-item:hover .list-title { color: var(--accent); }
     .list-date {
       font-family: 'Playfair Display', serif;
-      font-size: 32px;
+      font-size: 28px;
       font-weight: 400;
       color: var(--border);
       line-height: 1;
       padding-top: 4px;
     }
-
     .list-date small {
       display: block;
       font-size: 11px;
@@ -356,22 +479,19 @@
       margin-top: 4px;
       letter-spacing: 1px;
     }
-
     .list-tag {
       font-size: 10px;
       color: var(--accent);
       letter-spacing: 1px;
       text-transform: uppercase;
     }
-
     .list-title {
       font-family: 'Noto Serif SC', serif;
-      font-size: 24px;
+      font-size: 22px;
       font-weight: 400;
       margin-top: 6px;
       transition: color 0.2s;
     }
-
     .list-preview {
       margin-top: 8px;
       font-size: 13px;
@@ -379,99 +499,15 @@
       line-height: 1.8;
     }
 
-    /* ── 关于区 ── */
-    .about-section {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 60px;
-      padding: 60px;
-      background: var(--card);
-      border: 1px solid var(--border);
-      margin-bottom: 80px;
-    }
-
-    .about-section .img-placeholder {
-      width: 100%;
-      height: 320px;
-      background: var(--bg-dark);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 12px;
-      color: var(--text-light);
-    }
-
-    .about-label {
-      font-size: 10px;
-      color: var(--accent);
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      margin-bottom: 16px;
-    }
-
-    .about-section h2 {
-      font-family: 'Noto Serif SC', serif;
-      font-size: 28px;
-      font-weight: 400;
-      margin-bottom: 20px;
-    }
-
-    .about-section p {
-      font-size: 14px;
-      color: var(--text-light);
-      line-height: 2;
-    }
-
-    /* ── 页脚 ── */
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 48px 40px;
-      max-width: 1200px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    footer .logo {
-      font-size: 18px;
-    }
-
-    footer .social {
-      display: flex;
-      gap: 24px;
-    }
-
-    footer .social a {
-      font-size: 12px;
-      color: var(--text-light);
-      text-decoration: none;
-      letter-spacing: 1px;
-      transition: color 0.2s;
-    }
-
-    footer .social a:hover {
-      color: var(--accent);
-    }
-
-    footer .copyright {
-      font-size: 11px;
-      color: var(--text-light);
-      letter-spacing: 1px;
-    }
-
     /* ── 摄影画廊 ── */
-    .photo-gallery { margin-bottom: 80px; }
+    .photo-gallery { margin-bottom: 56px; }
     .gallery-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      grid-auto-rows: 200px;
-      gap: 12px;
+      grid-auto-rows: 180px;
+      gap: 10px;
     }
-    .gallery-item {
-      overflow: hidden;
-      border-radius: 4px;
-    }
+    .gallery-item { overflow: hidden; border-radius: 4px; }
     .gallery-item img {
       width: 100%;
       height: 100%;
@@ -482,22 +518,44 @@
     .gallery-item.tall { grid-row: span 2; }
     .gallery-item.wide { grid-column: span 2; }
 
+    /* ── 页脚 ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 48px 0;
+      margin-top: 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    footer .logo { font-size: 18px; }
+    footer .social { display: flex; gap: 24px; }
+    footer .social a {
+      font-size: 12px;
+      color: var(--text-light);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    footer .social a:hover { color: var(--accent); }
+    footer .copyright { font-size: 11px; color: var(--text-light); }
+
     /* ── 响应式 ── */
     @media (max-width: 900px) {
+      .intro-section { grid-template-columns: 1fr; }
+      .intro-photo { grid-template-columns: repeat(4, 1fr); grid-template-rows: 160px; }
+      .intro-photo img:first-child { grid-column: span 4; height: 160px; }
       .featured { grid-template-columns: 1fr; }
-      .featured-side { flex-direction: row; overflow-x: auto; }
-      .featured-item { min-width: 260px; }
       .article-grid { grid-template-columns: 1fr 1fr; }
-      .banner { grid-template-columns: 1fr; }
-      .about-section { grid-template-columns: 1fr; }
+      .mbti-banner { grid-template-columns: 1fr; gap: 24px; }
+      .mbti-hero { grid-template-columns: 1fr; }
+      .mbti-grid { grid-template-columns: 1fr; }
+      .mbti-journey { grid-template-columns: 1fr 1fr; }
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
     }
-
     @media (max-width: 600px) {
       .top-bar { padding: 0 20px; }
-      main { padding: 40px 20px; }
-      nav { gap: 20px; }
+      main { padding: 0 20px; }
+      nav { gap: 16px; }
       .article-grid { grid-template-columns: 1fr; }
-      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
       footer { flex-direction: column; gap: 20px; text-align: center; }
     }
   </style>
@@ -509,10 +567,10 @@
   <div class="top-bar">
     <a href="#" class="logo">LIZHI<span>.</span></a>
     <nav>
-      <a href="#" class="active">首页</a>
-      <a href="#">日记</a>
+      <a href="#" data-target="home" class="active">首页</a>
+      <a href="#" data-target="journal">日记</a>
+      <a href="#" data-target="mbti">MBTI</a>
       <a href="#">关于</a>
-      <a href="#">联系</a>
     </nav>
   </div>
 </header>
@@ -520,86 +578,51 @@
 <!-- 主内容 -->
 <main>
 
-  <!-- 专题区 -->
-  <section class="featured">
-    <div class="featured-main">
-      <div class="img-placeholder">封面图片区域</div>
-      <div class="tag">专题</div>
-      <h2>在杭州，一个人生活的第三年</h2>
-      <p class="desc">一个人住久了，会渐渐分不清是孤独还是自由。窗外的光换了几季，冰箱里的食材换了几轮，日子就这样一天天流过去了。</p>
-      <div class="date">2026.04.06 · 杭州</div>
+  <!-- 自我介面 -->
+  <section id="intro" class="intro-section">
+    <div class="intro-photo">
+      <img src="https://raw.githubusercontent.com/liangliangxiang20-web/lizhi-blog/main/photos/e257d3606da530079b01b0e7b14d8cb0.jpg" alt="西湖园林">
+      <img src="https://raw.githubusercontent.com/liangliangxiang20-web/lizhi-blog/main/photos/4e51c7398414123e0d6bdff509145f75.jpg" alt="林间小路">
+      <img src="https://raw.githubusercontent.com/liangliangxiang20-web/lizhi-blog/main/photos/f4183cbabce7b509b123d0acd7119bb6.jpg" alt="樱花">
     </div>
-    <div class="featured-side">
-      <div class="featured-item">
-        <div class="img-placeholder">图片</div>
-        <div>
-          <div class="tag">摄影</div>
-          <h3>西湖边的十分钟黄昏</h3>
-          <div class="date">2026.04.05</div>
-        </div>
+    <div class="intro-content">
+      <div class="label">HELLO</div>
+      <h1>李智</h1>
+      <div class="subtitle">1997 · 永州 → 岳阳 → 杭州</div>
+      <p>永州人，岳阳客居九年，毕业后辗转至杭州。没有惊天动地的故事，只想在平凡日子里找到一点意思。</p>
+      <p>📍 永州 — 柳宗元谪居之地，「永州八记」写的就是这里，潇水从这里流过。</p>
+      <p>🏙️ 岳阳 — 洞庭湖边九年，岳阳楼看过无数次，每次读《岳阳楼记》还是会被那句"先天下之忧而忧"戳到。</p>
+      <p>🎮 偶尔游戏 🎵 偶尔听歌 🍜 永远爱吃 📖 三体刷了三遍</p>
+      <div class="intro-tags">
+        <span class="tag"># 游戏</span>
+        <span class="tag"># 美食</span>
+        <span class="tag"># 音乐</span>
+        <span class="tag"># 三体</span>
+        <span class="tag"># INFP</span>
+        <span class="tag"># AI学习</span>
       </div>
-      <div class="featured-item">
-        <div class="img-placeholder">图片</div>
-        <div>
-          <div class="tag">阅读</div>
-          <h3>读完《也许你应该找个人聊聊》</h3>
-          <div class="date">2026.04.03</div>
-        </div>
-      </div>
-      <div class="featured-item">
-        <div class="img-placeholder">图片</div>
-        <div>
-          <div class="tag">AI学习</div>
-          <h3>第一次搭OpenClaw，成就感满满</h3>
-          <div class="date">2026.04.06</div>
-        </div>
+      <div class="intro-contact">
+        <span>📩 370746960@qq.com</span>
+        <span>📱 13975085182</span>
       </div>
     </div>
   </section>
 
-  <!-- 网格文章 -->
-  <div class="section-title">最新文章</div>
-  <section class="article-grid">
-    <div class="article-card">
-      <div class="img-placeholder">封面图片</div>
-      <div class="card-body">
-        <div class="tag">日常</div>
-        <h3>一个人的晚餐，简单也好</h3>
-        <p class="preview">冰箱里还剩半棵娃娃菜、一颗鸡蛋、一小把粉丝。做了一碗清汤粉丝煲，加了点香油和葱花。</p>
-        <div class="meta">2026.04.04 · 3分钟阅读</div>
-      </div>
-    </div>
-    <div class="article-card">
-      <div class="img-placeholder">封面图片</div>
-      <div class="card-body">
-        <div class="tag">旅行</div>
-        <h3>周末去了趟乌镇，淋了一场雨</h3>
-        <p class="preview">乌镇比想象中还要商业，但雨后的青石板路是真的好看。一个人走走停停，错过了木心美术馆。</p>
-        <div class="meta">2026.04.01 · 5分钟阅读</div>
-      </div>
-    </div>
-    <div class="article-card">
-      <div class="img-placeholder">封面图片</div>
-      <div class="card-body">
-        <div class="tag">AI学习</div>
-        <h3>Prompt写得好，AI真的不一样</h3>
-        <p class="preview">同一个问题，换了一种问法，ChatGPT给的回答质量完全不在一个级别。果然会用AI的人能拉开差距。</p>
-        <div class="meta">2026.04.07 · 4分钟阅读</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Banner -->
-  <section class="banner">
+  <!-- MBTI Banner -->
+  <div class="mbti-banner" onclick="showMbti()">
+    <div class="mbti-letter">INFP</div>
     <div>
-      <div class="label">关于这个网站</div>
-      <h2>这里存放着<br>我认真生活的证据</h2>
-      <p>我叫李智，在杭州生活。一个人的日子过得很快，所以想把每一天都记录下来。这里有我的日常、想法、摄影和偶尔的碎碎念。没有固定主题，只想把真实的日子留下来。</p>
+      <div class="mbti-name">Myers-Briggs Type Indicator</div>
+      <h2>理想主义者 · 治愈者</h2>
+      <p>我是谁？16种人格里最理想主义的那一种。重视真实与意义，擅长共情，容易被故事打动，在安静中寻找可能性。</p>
     </div>
-    <div class="img-placeholder">个人照片</div>
-  </section>
+    <div>
+      <p style="margin-top: 0;">INFP 只占人口的约 4%，但每一个都是独一无二的存在。我们不喜欢冲突，但内心有自己的原则；话不多，但感受极深。</p>
+      <div class="mbti-link">点击阅读完整 MBTI 介绍 →</div>
+    </div>
+  </div>
 
-  <!-- 时间线文章 -->
+  <!-- 日记 -->
   <div class="section-title">日记</div>
   <section class="article-list">
     <div class="list-item">
@@ -636,18 +659,73 @@
     </div>
   </section>
 
-  <!-- 关于 -->
-  <section class="about-section">
-    <div class="img-placeholder">个人照片</div>
-    <div>
-      <div class="about-label">关于我</div>
-      <h2>李智 · 1997</h2>
-      <p>永州人，岳阳客居九年，毕业后辗转至杭州。没有惊天动地的故事，只想在平凡日子里找到一点意思。</p>
-      <p style="margin-top: 16px;">📍 永州 — 柳宗元谪居之地，「永州八记」写的就是这里。潇水从这里流过，骨子里有点湘人的倔。</p>
-      <p style="margin-top: 12px;">🏙️ 岳阳 — 在洞庭湖边上了四年学，工作又待了五年。岳阳楼看过无数次，每次读《岳阳楼记》还是会被那句"先天下之忧而忧"戳到。</p>
-      <p style="margin-top: 16px;">🎮 游戏打得不多，但《三体》刷了三遍，叶文洁是我心里永远的神。🎵 偶尔听歌，🎮 偶尔游戏，🍜 永远爱吃。</p>
-      <p style="margin-top: 16px;">MBTI 测试结果是 INFP——理想主义者，难约但一旦认定就很真诚。正在学 AI，有点上头。</p>
-      <p style="margin-top: 16px;">📩 370746960@qq.com · 📱 13975085182</p>
+  <!-- 专题区 -->
+  <div class="section-title">专题</div>
+  <section class="featured">
+    <div class="featured-main">
+      <img src="https://raw.githubusercontent.com/liangliangxiang20-web/lizhi-blog/main/photos/3fc1b96c62d939b817bc382d64e211ab.jpg" alt="森林湖泊">
+      <div class="tag">专题</div>
+      <h2>在杭州，一个人生活的第三年</h2>
+      <p class="desc">一个人住久了，会渐渐分不清是孤独还是自由。窗外的光换了几季，冰箱里的食材换了几轮，日子就这样一天天流过去了。</p>
+      <div class="date">2026.04.06 · 杭州</div>
+    </div>
+    <div class="featured-side">
+      <div class="featured-item">
+        <img src="https://raw.githubusercontent.com/liangliangxiang20-web/lizhi-blog/main/photos/6a19bd652993ec3f3621c2ab8f30bd6e.jpg" alt="雷峰塔">
+        <div>
+          <div class="tag">摄影</div>
+          <h3>西湖边的十分钟黄昏</h3>
+          <div class="date">2026.04.05</div>
+        </div>
+      </div>
+      <div class="featured-item">
+        <img src="https://raw.githubusercontent.com/liangliangxiang20-web/lizhi-blog/main/photos/d94ec83730d82b6b3dfea24281f25c34.jpg" alt="秋日森林">
+        <div>
+          <div class="tag">阅读</div>
+          <h3>读完《也许你应该找个人聊聊》</h3>
+          <div class="date">2026.04.03</div>
+        </div>
+      </div>
+      <div class="featured-item">
+        <img src="https://raw.githubusercontent.com/liangliangxiang20-web/lizhi-blog/main/photos/831152b78deecdb9d2491a1fa287e71f.jpg" alt="西湖">
+        <div>
+          <div class="tag">AI学习</div>
+          <h3>第一次搭OpenClaw，成就感满满</h3>
+          <div class="date">2026.04.06</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 最新文章 -->
+  <div class="section-title">最新文章</div>
+  <section class="article-grid">
+    <div class="article-card">
+      <img src="https://raw.githubusercontent.com/liangliangxiang20-web/lizhi-blog/main/photos/ce3b95b98bdb943620830d0c08fb9178.jpg" alt="油画">
+      <div class="card-body">
+        <div class="tag">日常</div>
+        <h3>一个人的晚餐，简单也好</h3>
+        <p class="preview">冰箱里还剩半棵娃娃菜、一颗鸡蛋、一小把粉丝。做了一碗清汤粉丝煲，加了点香油和葱花。</p>
+        <div class="meta">2026.04.04 · 3分钟阅读</div>
+      </div>
+    </div>
+    <div class="article-card">
+      <img src="https://raw.githubusercontent.com/liangliangxiang20-web/lizhi-blog/main/photos/4e51c7398414123e0d6bdff509145f75.jpg" alt="林间小路">
+      <div class="card-body">
+        <div class="tag">旅行</div>
+        <h3>周末去了趟乌镇，淋了一场雨</h3>
+        <p class="preview">乌镇比想象中还要商业，但雨后的青石板路是真的好看。一个人走走停停，错过了木心美术馆。</p>
+        <div class="meta">2026.04.01 · 5分钟阅读</div>
+      </div>
+    </div>
+    <div class="article-card">
+      <img src="https://raw.githubusercontent.com/liangliangxiang20-web/lizhi-blog/main/photos/3fc1b96c62d939b817bc382d64e211ab.jpg" alt="森林湖泊">
+      <div class="card-body">
+        <div class="tag">AI学习</div>
+        <h3>Prompt写得好，AI真的不一样</h3>
+        <p class="preview">同一个问题，换了一种问法，ChatGPT给的回答质量完全不在一个级别。果然会用AI的人能拉开差距。</p>
+        <div class="meta">2026.04.07 · 4分钟阅读</div>
+      </div>
     </div>
   </section>
 
@@ -655,18 +733,97 @@
   <div class="section-title">摄影作品</div>
   <section class="photo-gallery">
     <div class="gallery-grid">
-      <div class="gallery-item"><img src="https://raw.githubusercontent.com/liangliangxiang20-web/lizhi-blog/main/photos/3fc1b96c62d939b817bc382d64e211ab.jpg" alt="森林湖泊" loading="lazy"></div>
+      <div class="gallery-item tall"><img src="https://raw.githubusercontent.com/liangliangxiang20-web/lizhi-blog/main/photos/3fc1b96c62d939b817bc382d64e211ab.jpg" alt="森林湖泊" loading="lazy"></div>
       <div class="gallery-item"><img src="https://raw.githubusercontent.com/liangliangxiang20-web/lizhi-blog/main/photos/4e51c7398414123e0d6bdff509145f75.jpg" alt="林间小路" loading="lazy"></div>
-      <div class="gallery-item tall"><img src="https://raw.githubusercontent.com/liangliangxiang20-web/lizhi-blog/main/photos/6a19bd652993ec3f3621c2ab8f30bd6e.jpg" alt="雷峰塔" loading="lazy"></div>
-      <div class="gallery-item wide"><img src="https://raw.githubusercontent.com/liangliangxiang20-web/lizhi-blog/main/photos/831152b78deecdb9d2491a1fa287e71f.jpg" alt="西湖" loading="lazy"></div>
       <div class="gallery-item"><img src="https://raw.githubusercontent.com/liangliangxiang20-web/lizhi-blog/main/photos/ce3b95b98bdb943620830d0c08fb9178.jpg" alt="油画" loading="lazy"></div>
+      <div class="gallery-item wide"><img src="https://raw.githubusercontent.com/liangliangxiang20-web/lizhi-blog/main/photos/831152b78deecdb9d2491a1fa287e71f.jpg" alt="西湖" loading="lazy"></div>
       <div class="gallery-item"><img src="https://raw.githubusercontent.com/liangliangxiang20-web/lizhi-blog/main/photos/d94ec83730d82b6b3dfea24281f25c34.jpg" alt="秋日森林" loading="lazy"></div>
-      <div class="gallery-item wide"><img src="https://raw.githubusercontent.com/liangliangxiang20-web/lizhi-blog/main/photos/e257d3606da530079b01b0e7b14d8cb0.jpg" alt="园林" loading="lazy"></div>
       <div class="gallery-item"><img src="https://raw.githubusercontent.com/liangliangxiang20-web/lizhi-blog/main/photos/f4183cbabce7b509b123d0acd7119bb6.jpg" alt="樱花" loading="lazy"></div>
+      <div class="gallery-item tall"><img src="https://raw.githubusercontent.com/liangliangxiang20-web/lizhi-blog/main/photos/6a19bd652993ec3f3621c2ab8f30bd6e.jpg" alt="雷峰塔" loading="lazy"></div>
     </div>
   </section>
 
 </main>
+
+<!-- MBTI 详情页（点击banner后显示） -->
+<div class="mbti-detail" id="mbti-page">
+  <main>
+    <div class="mbti-back" onclick="showHome()">← 返回首页</div>
+    <div class="mbti-hero">
+      <div class="big-letters">INFP<span>IN TROUBLED WORLD</span></div>
+      <div>
+        <h1>INFP · 理想主义者</h1>
+        <div class="alias">别名：治愈者 / 理想主义者 / 调停者</div>
+        <p>INFP 是 Myers-Briggs 人格类型指标中最为理想主义的类型。他们活在内心的价值观世界里，重视真实、意义和可能性。外人看来他们安静内敛，但他们内心有一团不灭的火——对更美好世界的渴望。</p>
+      </div>
+    </div>
+
+    <div class="mbti-content">
+      <h2>四个维度解析</h2>
+      <div class="mbti-journey">
+        <div class="journey-item"><div class="letter">I<span>内向</span></div><h5>内向型</h5><p>从独处中获取能量，社交后需要充电</p></div>
+        <div class="journey-item"><div class="letter">N<span>直觉</span></div><h5>直觉型</h5><p>关注可能性和未来，不喜欢只看眼前</p></div>
+        <div class="journey-item"><div class="letter">F<span>情感</span></div><h5>情感型</h5><p>做决定时优先考虑人的感受和价值</p></div>
+        <div class="journey-item"><div class="letter">P<span>感知</span></div><h5>感知型</h5><p>喜欢灵活随性，不喜欢被计划束缚</p></div>
+      </div>
+
+      <h2>INFP 的内心世界</h2>
+      <p>INFP 的内心就像一座私人图书馆，存放着无数的故事、理想和对世界的独特理解。他们是天然的共情者，能够深度理解他人的感受——不是因为刻意练习，而是因为他们本来就很敏感。</p>
+      <p>INFP 很少为了社交而社交，他们的社交圈子往往不大，但每一个都是经过内心"审核"过的。这也意味着，一旦被 INFP 接纳为朋友，你会获得他们最真诚的忠诚和付出。</p>
+      <div class="highlight-box">
+        "我不是冷漠，我只是需要先确认——这件事对我来说是重要的。"
+      </div>
+
+      <h2>核心性格特质</h2>
+      <div class="mbti-grid">
+        <div class="mbti-card">
+          <h4>💡 理想主义者</h4>
+          <p>INFP 心中有一个理想的自己和一个理想的世界。他们会默默为那个方向努力，但不一定说出来。</p>
+        </div>
+        <div class="mbti-card">
+          <h4>🎨 创造力强</h4>
+          <p>INFP 是天然的创作者，无论是写作、绘画、音乐还是其他艺术形式，他们总能找到表达的出口。</p>
+        </div>
+        <div class="mbti-card">
+          <h4>🤝 共情力极高</h4>
+          <p>能够感知到别人话语背后的情绪，哪怕对方根本没有表达出来。这是天赋，也是负担。</p>
+        </div>
+        <div class="mbti-card">
+          <h4>🔒 边界感清晰</h4>
+          <p>不喜欢被侵入，无论是物理空间还是精神空间。外人觉得他们高冷，其实是他们在保护内心。</p>
+        </div>
+      </div>
+
+      <h2>性格弱点</h2>
+      <p>没有完美的人格，INFP 也有自己的阴暗面：</p>
+      <p>**过度自省** — 一个很小的错误可以在心里翻来覆去放大无数倍。<br>
+      **行动力弱** — 想得太多而行动太少，容易陷入"思想上的巨人、行动上的矮子"。<br>
+      **情绪波动** — 内心敏感，容易因为一句话、一段文字、一首歌而情绪起伏。<br>
+      **不善于争** — 不喜欢正面冲突，往往选择沉默或者退让，但这不代表他们没有立场。</p>
+
+      <h2>INFP 的情感模式</h2>
+      <p>在亲密关系里，INFP 是极度忠诚的伴侣。他们表达爱意的方式不是轰轰烈烈，而是细水长流——记住你说的每一句话，在某个普通的日子给你惊喜，在你难过的时候不需要你开口就知道该抱抱你。</p>
+      <p>INFP 的理想伴侣是那种能看见他们内心世界的人。不需要多浪漫，但一定要真诚；不需要多富有，但一定要有自己的追求。</p>
+
+      <h2>INFP 的职业倾向</h2>
+      <div class="mbti-grid">
+        <div class="mbti-card"><h4>🖊️ 写作/编辑</h4><p>INFP 天然喜欢用文字表达内心，作家、编辑、记者都很适合。</p></div>
+        <div class="mbti-card"><h4>🎨 设计师/艺术家</h4><p>对美有敏锐的感知，加上创造力，适合各类创意工作。</p></div>
+        <div class="mbti-card"><h4>🧠 心理咨询师</h4><p>极强的共情能力，加上对人性深度理解的渴望，心理咨询是很好的出口。</p></div>
+        <div class="mbti-card"><h4>📚 教师/教育工作者</h4><p>影响他人、传递价值的渴望，加上耐心的天性，教育方向适合 INFP。</p></div>
+      </div>
+
+      <h2>给 INFP 的人生建议</h2>
+      <div class="highlight-box">
+        "你的理想主义不是缺点，这个世界需要你这样做梦的人。但记得——梦想要落地，先走出第一步。"
+      </div>
+      <p>1. **允许自己不完美** — 不是每件事都要做到 100 分，60 分也很好。<br>
+      2. **表达比憋着更重要** — 你的感受值得被听见，不需要等到"准备好"才开口。<br>
+      3. **行动先于思考** — 想太多是 INFP 最大的敌人，先做再调整往往更有效率。<br>
+      4. **找到你的表达出口** — 无论是写作、画画还是音乐，找到一个让内心世界流动的方式。</p>
+    </div>
+  </main>
+</div>
 
 <!-- 页脚 -->
 <footer>
@@ -675,10 +832,34 @@
     <a href="#">微博</a>
     <a href="#">小红书</a>
     <a href="#">GitHub</a>
-    <a href="#">邮箱</a>
   </div>
   <div class="copyright">© 2026 李智 · 杭州</div>
 </footer>
+
+<script>
+  function showMbti() {
+    document.querySelector('main').style.display = 'none';
+    document.querySelector('footer').style.display = 'none';
+    document.getElementById('mbti-page').classList.add('active');
+    document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+    document.querySelector('nav a[data-target="mbti"]').classList.add('active');
+    window.scrollTo(0, 0);
+  }
+  function showHome() {
+    document.getElementById('mbti-page').classList.remove('active');
+    document.querySelector('main').style.display = 'block';
+    document.querySelector('footer').style.display = 'flex';
+    document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+    document.querySelector('nav a[data-target="home"]').classList.add('active');
+    window.scrollTo(0, 0);
+  }
+  document.querySelectorAll('nav a').forEach(link => {
+    link.addEventListener('click', () => {
+      document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+      link.classList.add('active');
+    });
+  });
+</script>
 
 </body>
 </html>
