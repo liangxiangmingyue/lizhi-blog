@@ -460,6 +460,28 @@
       letter-spacing: 1px;
     }
 
+    /* ── 摄影画廊 ── */
+    .photo-gallery { margin-bottom: 80px; }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-auto-rows: 200px;
+      gap: 12px;
+    }
+    .gallery-item {
+      overflow: hidden;
+      border-radius: 4px;
+    }
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s;
+    }
+    .gallery-item:hover img { transform: scale(1.04); }
+    .gallery-item.tall { grid-row: span 2; }
+    .gallery-item.wide { grid-column: span 2; }
+
     /* ── 响应式 ── */
     @media (max-width: 900px) {
       .featured { grid-template-columns: 1fr; }
@@ -475,6 +497,7 @@
       main { padding: 40px 20px; }
       nav { gap: 20px; }
       .article-grid { grid-template-columns: 1fr; }
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
       footer { flex-direction: column; gap: 20px; text-align: center; }
     }
   </style>
@@ -621,6 +644,21 @@
       <h2>李智，坐标杭州</h2>
       <p>目前在学习AI相关知识，也在慢慢记录这个过程中的每一个小发现。喜欢拍照、写字、和有意思的人聊天。正在学AI训练与Prompt工程，偶尔看点心理学和哲学的书。</p>
       <p style="margin-top: 16px;">相信好的体验值得被记录。希望若干年后翻看，能想起每一天的样子。</p>
+    </div>
+  </section>
+
+  <!-- 摄影画廊 -->
+  <div class="section-title">摄影作品</div>
+  <section class="photo-gallery">
+    <div class="gallery-grid">
+      <div class="gallery-item"><img src="https://raw.githubusercontent.com/liangliangxiang20-web/lizhi-blog/main/photos/3fc1b96c62d939b817bc382d64e211ab.jpg" alt="森林湖泊" loading="lazy"></div>
+      <div class="gallery-item"><img src="https://raw.githubusercontent.com/liangliangxiang20-web/lizhi-blog/main/photos/4e51c7398414123e0d6bdff509145f75.jpg" alt="林间小路" loading="lazy"></div>
+      <div class="gallery-item tall"><img src="https://raw.githubusercontent.com/liangliangxiang20-web/lizhi-blog/main/photos/6a19bd652993ec3f3621c2ab8f30bd6e.jpg" alt="雷峰塔" loading="lazy"></div>
+      <div class="gallery-item wide"><img src="https://raw.githubusercontent.com/liangliangxiang20-web/lizhi-blog/main/photos/831152b78deecdb9d2491a1fa287e71f.jpg" alt="西湖" loading="lazy"></div>
+      <div class="gallery-item"><img src="https://raw.githubusercontent.com/liangliangxiang20-web/lizhi-blog/main/photos/ce3b95b98bdb943620830d0c08fb9178.jpg" alt="油画" loading="lazy"></div>
+      <div class="gallery-item"><img src="https://raw.githubusercontent.com/liangliangxiang20-web/lizhi-blog/main/photos/d94ec83730d82b6b3dfea24281f25c34.jpg" alt="秋日森林" loading="lazy"></div>
+      <div class="gallery-item wide"><img src="https://raw.githubusercontent.com/liangliangxiang20-web/lizhi-blog/main/photos/e257d3606da530079b01b0e7b14d8cb0.jpg" alt="园林" loading="lazy"></div>
+      <div class="gallery-item"><img src="https://raw.githubusercontent.com/liangliangxiang20-web/lizhi-blog/main/photos/f4183cbabce7b509b123d0acd7119bb6.jpg" alt="樱花" loading="lazy"></div>
     </div>
   </section>
 
