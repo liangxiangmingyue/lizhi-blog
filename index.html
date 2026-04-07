@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>李智 · DAILY</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;600&family=Inter:wght@300;400;500&family=Space+Mono:wght@400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f5f2ee;
+      --text: #1a1a1a;
+      --accent: #c8a96e;
+      --muted: #888;
+      --card: #ffffff;
+      --border: #e0dbd4;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ── 左侧导航 ── */
+    nav {
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 220px;
+      height: 100vh;
+      background: var(--card);
+      border-right: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      padding: 48px 32px;
+      z-index: 100;
+    }
+
+    .nav-avatar {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      font-weight: 600;
+      color: white;
+      letter-spacing: 2px;
+      margin-bottom: 20px;
+    }
+
+    .nav-name {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 18px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      margin-bottom: 6px;
+    }
+
+    .nav-desc {
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 48px;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      flex: 1;
+    }
+
+    .nav-link {
+      font-size: 13px;
+      color: var(--muted);
+      text-decoration: none;
+      padding: 8px 0;
+      letter-spacing: 0.5px;
+      transition: color 0.2s;
+      cursor: pointer;
+    }
+
+    .nav-link:hover, .nav-link.active {
+      color: var(--text);
+    }
+
+    .nav-link.active {
+      font-weight: 500;
+    }
+
+    .nav-bottom {
+      font-size: 10px;
+      color: var(--muted);
+      letter-spacing: 0.5px;
+    }
+
+    /* ── 右侧内容 ── */
+    main {
+      margin-left: 220px;
+      min-height: 100vh;
+    }
+
+    section {
+      display: none;
+      padding: 80px 96px;
+      max-width: 900px;
+    }
+
+    section.active { display: block; }
+
+    /* ── 首页 ── */
+    .hero-time {
+      font-family: 'Space Mono', monospace;
+      font-size: 12px;
+      color: var(--muted);
+      letter-spacing: 2px;
+      margin-bottom: 32px;
+    }
+
+    .hero-title {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 56px;
+      font-weight: 300;
+      line-height: 1.3;
+      margin-bottom: 48px;
+      letter-spacing: 4px;
+    }
+
+    .hero-title span {
+      color: var(--accent);
+    }
+
+    .hero-sub {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 2;
+      max-width: 480px;
+      margin-bottom: 64px;
+    }
+
+    .hero-divider {
+      width: 1px;
+      height: 80px;
+      background: var(--border);
+      margin-bottom: 40px;
+    }
+
+    .hero-tags {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .tag {
+      font-size: 11px;
+      padding: 6px 14px;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      color: var(--muted);
+      letter-spacing: 0.5px;
+    }
+
+    /* ── 日记列表 ── */
+    .journal-header {
+      font-family: 'Space Mono', monospace;
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 2px;
+      margin-bottom: 48px;
+    }
+
+    .journal-item {
+      border-bottom: 1px solid var(--border);
+      padding: 40px 0;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .journal-item:hover {
+      padding-left: 16px;
+      border-color: var(--accent);
+    }
+
+    .journal-date {
+      font-family: 'Space Mono', monospace;
+      font-size: 10px;
+      color: var(--accent);
+      letter-spacing: 2px;
+      margin-bottom: 12px;
+    }
+
+    .journal-title {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 24px;
+      font-weight: 400;
+      margin-bottom: 12px;
+    }
+
+    .journal-preview {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .journal-tags {
+      display: flex;
+      gap: 8px;
+      margin-top: 16px;
+    }
+
+    .journal-tag {
+      font-size: 10px;
+      color: var(--muted);
+      background: var(--bg);
+      padding: 4px 10px;
+      border-radius: 4px;
+    }
+
+    /* ── 日记详情 ── */
+    .back-btn {
+      font-size: 12px;
+      color: var(--muted);
+      cursor: pointer;
+      margin-bottom: 48px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: color 0.2s;
+    }
+
+    .back-btn:hover { color: var(--text); }
+
+    .journal-detail-date {
+      font-family: 'Space Mono', monospace;
+      font-size: 10px;
+      color: var(--accent);
+      letter-spacing: 2px;
+      margin-bottom: 20px;
+    }
+
+    .journal-detail-title {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 40px;
+      font-weight: 400;
+      margin-bottom: 40px;
+      line-height: 1.4;
+    }
+
+    .journal-body {
+      font-size: 15px;
+      line-height: 2.2;
+      color: #333;
+    }
+
+    .journal-body p { margin-bottom: 24px; }
+
+    /* ── 关于 ── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      margin-top: 48px;
+    }
+
+    .about-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 32px;
+    }
+
+    .about-card-title {
+      font-family: 'Space Mono', monospace;
+      font-size: 10px;
+      color: var(--accent);
+      letter-spacing: 2px;
+      margin-bottom: 16px;
+    }
+
+    .about-card p {
+      font-size: 13px;
+      line-height: 1.9;
+      color: #555;
+    }
+
+    /* ── 联系 ── */
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      max-width: 480px;
+    }
+
+    .form-group label {
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      font-family: inherit;
+      font-size: 14px;
+      background: var(--card);
+      color: var(--text);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-color: var(--accent);
+    }
+
+    .form-group textarea { height: 120px; resize: none; }
+
+    .submit-btn {
+      padding: 14px 32px;
+      background: var(--text);
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-family: inherit;
+      font-size: 13px;
+      cursor: pointer;
+      letter-spacing: 1px;
+      align-self: flex-start;
+      transition: background 0.2s;
+    }
+
+    .submit-btn:hover { background: var(--accent); }
+
+    /* ── 移动端 ── */
+    @media (max-width: 768px) {
+      nav {
+        width: 100%;
+        height: auto;
+        position: relative;
+        flex-direction: row;
+        padding: 20px 24px;
+        flex-wrap: wrap;
+      }
+      main { margin-left: 0; }
+      section { padding: 40px 24px; }
+      .hero-title { font-size: 36px; }
+      .about-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- 左侧导航 -->
+<nav>
+  <div class="nav-avatar">LZ</div>
+  <div class="nav-name">李 智</div>
+  <div class="nav-desc">日常 / 记录 / 思考</div>
+  <div class="nav-links">
+    <div class="nav-link active" data-target="home">首页</div>
+    <div class="nav-link" data-target="journal">日记</div>
+    <div class="nav-link" data-target="about">关于</div>
+    <div class="nav-link" data-target="contact">联系</div>
+  </div>
+  <div class="nav-bottom">© 2026 李智</div>
+</nav>
+
+<!-- 右侧内容 -->
+<main>
+
+  <!-- 首页 -->
+  <section id="home" class="active">
+    <div class="hero-time" id="clock">00:00 · 星期一</div>
+    <h1 class="hero-title">记录<br><span>每一天</span><br>的温度</h1>
+    <p class="hero-sub">这里是我的日常碎片——想法、见闻、偶尔的碎碎念。没有固定主题，只想把真实的日子留下来。</p>
+    <div class="hero-divider"></div>
+    <div class="hero-tags">
+      <span class="tag"># 日常</span>
+      <span class="tag"># 随想</span>
+      <span class="tag"># 阅读</span>
+      <span class="tag"># 旅行</span>
+    </div>
+  </section>
+
+  <!-- 日记列表 -->
+  <section id="journal">
+    <div class="journal-header">JOURNAL · 日记</div>
+    <div id="journal-list"></div>
+  </section>
+
+  <!-- 日记详情 -->
+  <section id="journal-detail">
+    <div class="back-btn" onclick="showJournalList()">← 返回日记列表</div>
+    <div class="journal-detail-date" id="detail-date"></div>
+    <h1 class="journal-detail-title" id="detail-title"></h1>
+    <div class="journal-body" id="detail-body"></div>
+  </section>
+
+  <!-- 关于 -->
+  <section id="about">
+    <div class="journal-header">ABOUT · 关于</div>
+    <div class="about-grid">
+      <div class="about-card">
+        <div class="about-card-title">关于我</div>
+        <p>我叫李智，坐标杭州。喜欢拍照、写字、和有意思的人聊天。目前在学习 AI 相关知识，也在慢慢记录这个过程中的每一个小发现。</p>
+      </div>
+      <div class="about-card">
+        <div class="about-card-title">这个网站</div>
+        <p>这里是我的个人站点，用来存放日记、想法和一些碎碎念。希望若干年后翻看，能想起每一天的样子。</p>
+      </div>
+      <div class="about-card">
+        <div class="about-card-title">兴趣</div>
+        <p>阅读、摄影、旅行、咖啡，以及一切有趣的事物。相信好的体验值得被记录。</p>
+      </div>
+      <div class="about-card">
+        <div class="about-card-title">正在学</div>
+        <p>AI 训练与 Prompt 工程，数据分析，偶尔也看点心理学和哲学的书。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 联系 -->
+  <section id="contact">
+    <div class="journal-header">CONTACT · 联系</div>
+    <form class="contact-form" onsubmit="handleSubmit(event)">
+      <div class="form-group">
+        <label>你的邮箱</label>
+        <input type="email" placeholder="example@mail.com" required>
+      </div>
+      <div class="form-group">
+        <label>想说的话</label>
+        <textarea placeholder="想说点什么..." required></textarea>
+      </div>
+      <button type="submit" class="submit-btn">发送消息</button>
+    </form>
+  </section>
+
+</main>
+
+<script>
+  // ── 时钟 ──
+  function updateClock() {
+    const d = new Date();
+    const days = ['星期日','星期一','星期二','星期三','星期四','星期五','星期六'];
+    const h = String(d.getHours()).padStart(2,'0');
+    const m = String(d.getMinutes()).padStart(2,'0');
+    document.getElementById('clock').textContent = `${h}:${m} · ${days[d.getDay()]}`;
+  }
+  updateClock();
+  setInterval(updateClock, 30000);
+
+  // ── 导航 ──
+  document.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', () => {
+      document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+      link.classList.add('active');
+      const target = link.dataset.target;
+      document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
+      document.getElementById(target).classList.add('active');
+      window.scrollTo(0, 0);
+    });
+  });
+
+  // ── 日记数据 ──
+  const journalData = [
+    {
+      date: '2026.04.06 · 杭州',
+      title: '第一天搭 OpenClaw，像是打开了新世界',
+      preview: '跟着老师一步步配置，不到半小时就跑起来了。本地运行的 AI 助手，比想象中流畅太多。数据留在本地，隐私问题也不用担心。',
+      tags: ['AI学习', '工具'],
+      body: `<p>今天在且曼学院学了 OpenClaw 的安装配置，真正自己动手搭了一套本地 AI 助手。</p>
+<p>之前总觉得这些东西离普通人很远，要写代码、要懂技术。结果跟着老师走下来，发现门槛比我想象低太多了。</p>
+<p>最惊喜的是反应速度，日常提问、写文案、查资料都能用。感觉工作效率要翻倍了。</p>
+<p>课后自己又捣鼓了半小时，装了几个插件，越来越顺手。真的建议每个想学 AI 的人都去试试。</p>`
+    },
+    {
+      date: '2026.04.05 · 杭州',
+      title: '周末Citywalk，随手拍了几张',
+      preview: '南山路→西湖→断桥，走走停停拍了一路。最近迷上胶片感，后期套了个 Kodak 400 的预设，很喜欢那种颗粒感。',
+      tags: ['摄影', '日常'],
+      body: `<p>难得的好天气，下午一个人去西湖边走了走。</p>
+<p>带了相机，随手拍了几张。后期套了 Kodak Gold 400 的预设，色彩很舒服，淡淡的暖调。</p>
+<p>断桥边人超多，但还是拍到了一张喜欢的——湖面波光粼粼的，远处的雷峰塔若隐若现。</p>
+<p>最近越来越觉得，拍照不只是记录，更是看待生活的一种方式。</p>`
+    },
+    {
+      date: '2026.04.03 · 杭州',
+      title: '读完了《也许你应该找个人聊聊》',
+      preview: '一本关于心理治疗师的回忆录性质的心理学读物。笑着笑着就哭了，哭完又觉得被治愈了。推荐给每一个在生活中努力的人。',
+      tags: ['阅读', '心理学'],
+      body: `<p>终于读完了，断断续续读了两周。</p>
+<p>作者是一个心理治疗师，写了她和四个来访者的故事。每个人都有自己的困境——焦虑症患者、社交恐惧的编剧、刚得知父亲癌症晚期的女教授……</p>
+<p>读的过程中几次眼眶湿润。不是那种煽情的写法，而是真实。真实的人和真实的困境，读完有一种被理解的感觉。</p>
+<p>其中有一句话印象很深："我们总是在一个人的时候才最孤独，却又拼命用忙碌来逃避这种孤独。"</p>
+<p>推荐给每一个在生活中努力的人。</p>`
+    }
+  ];
+
+  function renderJournalList() {
+    const list = document.getElementById('journal-list');
+    list.innerHTML = journalData.map((j, i) => `
+      <div class="journal-item" onclick="showJournalDetail(${i})">
+        <div class="journal-date">${j.date}</div>
+        <div class="journal-title">${j.title}</div>
+        <div class="journal-preview">${j.preview}</div>
+        <div class="journal-tags">
+          ${j.tags.map(t => `<span class="journal-tag"># ${t}</span>`).join('')}
+        </div>
+      </div>
+    `).join('');
+  }
+
+  function showJournalDetail(i) {
+    const j = journalData[i];
+    document.getElementById('detail-date').textContent = j.date;
+    document.getElementById('detail-title').textContent = j.title;
+    document.getElementById('detail-body').innerHTML = j.body;
+    document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
+    document.getElementById('journal-detail').classList.add('active');
+    window.scrollTo(0, 0);
+  }
+
+  function showJournalList() {
+    document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
+    document.getElementById('journal').classList.add('active');
+    document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+    document.querySelector('[data-target="journal"]').classList.add('active');
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('.submit-btn');
+    btn.textContent = '已发送 ✓';
+    btn.style.background = '#6b9e78';
+    setTimeout(() => {
+      btn.textContent = '发送消息';
+      btn.style.background = '';
+      e.target.reset();
+    }, 3000);
+  }
+
+  renderJournalList();
+</script>
+
+</body>
+</html>
